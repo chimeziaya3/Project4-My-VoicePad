@@ -4,7 +4,9 @@ class Navbar extends Component {
     render() {
         return (
             <nav className='navbar'>
-                <h2>My Voicepad</h2> 
+                <div className='logoContainer_Nav'>
+                    <h2 className='logo'>My Voicepad</h2>
+                </div> 
             </nav>
         )
     }
