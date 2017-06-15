@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import Navbar from './Navbar'
+import React, { Component } from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 // import {
 //     BrowserRouter as Router,
 //     Route,
@@ -12,7 +13,7 @@ class Voicepad extends Component {
             <main>
                 <Navbar/>
                 <h1>chim</h1>
-                
+                <Footer/>
             </main>
         )
     }
