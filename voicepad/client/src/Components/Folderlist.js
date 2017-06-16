@@ -4,6 +4,11 @@ class Folderlist extends Component {
     render() {
         return (
             <div>
+                {this.state.folder.map((folder) => {
+                    {this.state.notes.map((notes) => {
+                        
+                    })}
+                })}
             </div>
         )
     }
