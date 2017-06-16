@@ -1,7 +1,12 @@
 class FoldersController < ApplicationController
   def index
     @folders = Folder.all
-    render json: { message: "ok", folders_data: @folders }
+    @notes = []
+    @folders.each do |folder|
+        @notes << folder.notes
+    end
+    
+    render json: { message: "ok", folders_data: @folders, notes_data: @notes }
   end
   
   def show

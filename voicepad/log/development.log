@@ -198,3 +198,41 @@ Migrating to CreateNotes (20170615202251)
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "folders" ("foldername", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["foldername", "chim food"], ["created_at", "2017-06-16 15:21:47.306991"], ["updated_at", "2017-06-16 15:21:47.306991"]]
   [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/folders" for 127.0.0.1 at 2017-06-16 13:39:40 -0400
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FoldersController#index as */*
+  [1m[36mFolder Load (29.5ms)[0m  [1m[34mSELECT "folders".* FROM "folders"[0m
+Completed 200 OK in 106ms (Views: 13.7ms | ActiveRecord: 72.0ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2017-06-16 13:40:12 -0400
+Processing by FoldersController#index as */*
+  [1m[36mFolder Load (0.8ms)[0m  [1m[34mSELECT "folders".* FROM "folders"[0m
+Completed 200 OK in 160ms (Views: 89.6ms | ActiveRecord: 70.5ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2017-06-16 13:41:42 -0400
+Processing by FoldersController#index as */*
+  [1m[36mFolder Load (0.8ms)[0m  [1m[34mSELECT "folders".* FROM "folders"[0m
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2017-06-16 13:43:43 -0400
+Processing by FoldersController#index as */*
+  [1m[36mFolder Load (0.7ms)[0m  [1m[34mSELECT "folders".* FROM "folders"[0m
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute `find_notes`):
+  
+app/controllers/folders_controller.rb:5:in `block in index'
+app/controllers/folders_controller.rb:4:in `index'
+Started GET "/folders" for 127.0.0.1 at 2017-06-16 13:44:39 -0400
+Processing by FoldersController#index as */*
+  [1m[36mFolder Load (0.7ms)[0m  [1m[34mSELECT "folders".* FROM "folders"[0m
+  [1m[36mNote Load (23.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."folder_id" = $1[0m  [["folder_id", 1]]
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."folder_id" = $1[0m  [["folder_id", 2]]
+Completed 200 OK in 107ms (Views: 35.7ms | ActiveRecord: 33.7ms)
+
+

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Folderlist from './Folderlist';
 // import {
 //     BrowserRouter as Router,
 //     Route,
@@ -8,6 +9,25 @@ import Footer from './Footer';
 // } from 'react-router-dom';
 
 class Voicepad extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            folder: ''
+        }
+    }
+    componentDidMount() {
+        fetch('/folders')
+            .then((res) => {
+                return res.json()
+            })
+            .then((json) => {
+                console.log(json);
+                this.setState({
+
+                    folder: json.folders_data
+                });
+            });
+    }
     render(){
         return (
             <main>
@@ -16,7 +36,7 @@ class Voicepad extends Component {
                 <div id="openModal" className="modalDialog">
 	                <div>
 		                <a href="#close" title="Close" className="close">X</a>
-		                <h2>New Folder</h2>
+		                <Folderlist/>
 		                <form>
                             <input
                                 name='Name'
