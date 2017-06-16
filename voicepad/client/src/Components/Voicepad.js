@@ -12,7 +12,8 @@ class Voicepad extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            folder: ''
+            folder: '',
+            notes: ''
         }
     }
     componentDidMount() {
@@ -24,7 +25,8 @@ class Voicepad extends Component {
                 console.log(json);
                 this.setState({
 
-                    folder: json.folders_data
+                    folder: json.folders_data,
+                    notes: json.notes_data
                 });
             });
     }
@@ -32,11 +34,11 @@ class Voicepad extends Component {
         return (
             <main>
                 <Navbar/>
-                <h1>chim</h1>
+                <Folderlist/>
                 <div id="openModal" className="modalDialog">
 	                <div>
 		                <a href="#close" title="Close" className="close">X</a>
-		                <Folderlist/>
+		                
 		                <form>
                             <input
                                 name='Name'

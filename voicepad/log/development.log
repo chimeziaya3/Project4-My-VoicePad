@@ -236,3 +236,11 @@ Processing by FoldersController#index as */*
 Completed 200 OK in 107ms (Views: 35.7ms | ActiveRecord: 33.7ms)
 
 
+Started GET "/folders" for 127.0.0.1 at 2017-06-16 14:00:15 -0400
+Processing by FoldersController#index as */*
+  [1m[36mFolder Load (2.1ms)[0m  [1m[34mSELECT "folders".* FROM "folders"[0m
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."folder_id" = $1[0m  [["folder_id", 1]]
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."folder_id" = $1[0m  [["folder_id", 2]]
+Completed 200 OK in 132ms (Views: 47.4ms | ActiveRecord: 3.6ms)
+
+
