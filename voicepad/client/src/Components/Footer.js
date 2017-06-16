@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 class Footer extends Component {
     render() {
         return (
-            <footer className='footer'>
-                <h4>New Folder</h4>
-            </footer>
+            <a href='#openModal' className='footer'>
+                New Folder
+            </a>
         )
     }
 }

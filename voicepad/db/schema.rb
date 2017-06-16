@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615200140) do
+ActiveRecord::Schema.define(version: 20170615202251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 20170615200140) do
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.bigint "folder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_notes_on_folder_id"
   end
 
 end

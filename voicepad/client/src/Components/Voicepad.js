@@ -13,6 +13,21 @@ class Voicepad extends Component {
             <main>
                 <Navbar/>
                 <h1>chim</h1>
+                <div id="openModal" className="modalDialog">
+	                <div>
+		                <a href="#close" title="Close" className="close">X</a>
+		                <h2>New Folder</h2>
+		                <form>
+                            <input
+                                name='Name'
+                                placeholder='Name'
+                                type='text'
+                            />
+                            <br/>
+                            <button>Save</button>
+                        </form>
+	                </div>
+                </div>
                 <Footer/>
             </main>
         )

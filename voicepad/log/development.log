@@ -41,3 +41,160 @@ Migrating to CreateFolders (20170615200140)
   [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1548502441791816420)[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1548502441791816420);[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFolders (20170615201636)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (32.2ms)[0m  [1m[35mCREATE TABLE "folders" ("id" bigserial primary key, "foldername" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1548502441791816420)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (224.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "voicepad_development"[0m
+  [1m[35m (234.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "voicepad_test"[0m
+  [1m[35m (20.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1548502441791816420);[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFolders (20170615202215)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (34.5ms)[0m  [1m[35mCREATE TABLE "folders" ("id" bigserial primary key, "foldername" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170615202215"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotes (20170615202251)
+  [1m[35m (6.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (34.1ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying, "content" text, "folder_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_5bccd562c2"
+FOREIGN KEY ("folder_id")
+  REFERENCES "folders" ("id")
+)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE  INDEX  "index_notes_on_folder_id" ON "notes"  ("folder_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170615202251"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-06-15 20:24:58.850066"], ["updated_at", "2017-06-15 20:24:58.850066"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1548502441791816420)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mNote Load (14.4ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mFolder Load (6.5ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (18.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (15.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "folder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "math"], ["content", "why do i even bother with you?"], ["folder_id", 1], ["created_at", "2017-06-16 14:40:19.062871"], ["updated_at", "2017-06-16 14:40:19.062871"]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (11.6ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "math"], ["content", "why do i even bother with you?"], ["created_at", "2017-06-16 14:42:24.136077"], ["updated_at", "2017-06-16 14:42:24.136077"]]
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "food"], ["content", "i love food"], ["created_at", "2017-06-16 14:42:24.153317"], ["updated_at", "2017-06-16 14:42:24.153317"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (13.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (8603.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "voicepad_development"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (257.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "voicepad_development"[0m
+  [1m[35m (246.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "voicepad_test"[0m
+  [1m[35m (35.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1548502441791816420);[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFolders (20170615202215)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (55.2ms)[0m  [1m[35mCREATE TABLE "folders" ("id" bigserial primary key, "foldername" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170615202215"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotes (20170615202251)
+  [1m[35m (6.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying, "content" text, "folder_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_notes_on_folder_id" ON "notes"  ("folder_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170615202251"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-06-16 14:54:17.735559"], ["updated_at", "2017-06-16 14:54:17.735559"]]
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1548502441791816420)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "math"], ["content", "why do i even bother with you?"], ["created_at", "2017-06-16 14:55:32.830458"], ["updated_at", "2017-06-16 14:55:32.830458"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "food"], ["content", "i love food"], ["created_at", "2017-06-16 14:55:32.841323"], ["updated_at", "2017-06-16 14:55:32.841323"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "folder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "math"], ["content", "why do i even bother with you?"], ["folder_id", 1], ["created_at", "2017-06-16 15:01:23.142810"], ["updated_at", "2017-06-16 15:01:23.142810"]]
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "folder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "food"], ["content", "i love food"], ["folder_id", 2], ["created_at", "2017-06-16 15:01:23.153111"], ["updated_at", "2017-06-16 15:01:23.153111"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "folder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "math"], ["content", "why do i even bother with you?"], ["folder_id", 1], ["created_at", "2017-06-16 15:02:17.364936"], ["updated_at", "2017-06-16 15:02:17.364936"]]
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "folder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "food"], ["content", "i love food"], ["folder_id", 2], ["created_at", "2017-06-16 15:02:17.374636"], ["updated_at", "2017-06-16 15:02:17.374636"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (18.0ms)[0m  [1m[32mINSERT INTO "folders" ("foldername", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["foldername", "lectures"], ["created_at", "2017-06-16 15:02:17.387647"], ["updated_at", "2017-06-16 15:02:17.387647"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "folders" ("foldername", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["foldername", "chim food"], ["created_at", "2017-06-16 15:02:17.408604"], ["updated_at", "2017-06-16 15:02:17.408604"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (225.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "voicepad_development"[0m
+  [1m[35m (225.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "voicepad_test"[0m
+  [1m[35m (19.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1548502441791816420);[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFolders (20170615202215)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.7ms)[0m  [1m[35mCREATE TABLE "folders" ("id" bigserial primary key, "foldername" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170615202215"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotes (20170615202251)
+  [1m[35m (6.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying, "content" text, "folder_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_notes_on_folder_id" ON "notes"  ("folder_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170615202251"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-06-16 15:21:39.606530"], ["updated_at", "2017-06-16 15:21:39.606530"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1548502441791816420)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (13.0ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "folder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "math"], ["content", "why do i even bother with you?"], ["folder_id", 1], ["created_at", "2017-06-16 15:21:47.258100"], ["updated_at", "2017-06-16 15:21:47.258100"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "content", "folder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "food"], ["content", "i love food"], ["folder_id", 2], ["created_at", "2017-06-16 15:21:47.276000"], ["updated_at", "2017-06-16 15:21:47.276000"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.5ms)[0m  [1m[32mINSERT INTO "folders" ("foldername", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["foldername", "lectures"], ["created_at", "2017-06-16 15:21:47.293778"], ["updated_at", "2017-06-16 15:21:47.293778"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "folders" ("foldername", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["foldername", "chim food"], ["created_at", "2017-06-16 15:21:47.306991"], ["updated_at", "2017-06-16 15:21:47.306991"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
