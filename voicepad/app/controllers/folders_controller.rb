@@ -6,7 +6,11 @@ class FoldersController < ApplicationController
         @notes << folder.notes
     end
     
-    render json: { message: "ok", folders_data: @folders, notes_data: @notes }
+    render json: { 
+                    message: "ok",  
+                    folders_data: @folders, 
+                    notes_data: @notes 
+                }
   end
   
   def show
