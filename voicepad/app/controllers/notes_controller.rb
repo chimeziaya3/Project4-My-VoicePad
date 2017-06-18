@@ -7,5 +7,10 @@ class NotesController < ApplicationController
     else
       redirect_to post_path(params[:folder_id]), alert: "Missing Information"
     end
+    render json: { 
+                    message: "ok",  
+                    notes_data: @note, 
+                    # notes_data: @notes 
+                }
   end
 end

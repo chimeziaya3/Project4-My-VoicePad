@@ -8,7 +8,13 @@ class Folderlist extends Component {
                 {this.props.folders.map((folders) => {
                     return (
                         
-                        <Folder key={folders.id} folder={folders} notes={this.props.notes}/>
+                        <Folder 
+                            key={folders.id} 
+                            folder={folders} 
+                            notes={this.props.notes}
+
+                            handleFolderDelete={this.props.handleFolderDelete}
+                        />
                     )
                 })}
             </div>

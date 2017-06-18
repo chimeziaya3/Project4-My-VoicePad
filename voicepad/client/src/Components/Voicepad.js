@@ -20,6 +20,7 @@ class Voicepad extends Component {
         this.handleInputFoldernameChange = this.handleInputFoldernameChange.bind(this);
         this.handleFolderCreate = this.handleFolderCreate.bind(this);
         this.fetchAllData = this.fetchAllData.bind(this);
+        this.handleFolderDelete = this.handleFolderDelete.bind(this);
 
     }
 
@@ -75,15 +76,32 @@ class Voicepad extends Component {
 
     }
 
+    handleFolderDelete(id) {
+        fetch(`/folders/${id}`, {
+      method: 'DELETE',
+        }).then(res => res.json()).then((json) => {
+            this.setState({
+                folders: json.folders_data,
+            });
+        }).catch(err => console.log(err));
+  
+    }
+
     
 
     render(){
         return (
             <main>
                 <Navbar/>
-                <Folderlist folders={this.state.folders} notes={this.state.notes}/>
+                <Folderlist 
+                    folders={this.state.folders} 
+                    notes={this.state.notes}
+
+                    handleFolderDelete={this.handleFolderDelete}
+                />
                 <AddFolderFrom 
-                    handleFolderCreate={this.handleFolderCreate} 
+                    handleFolderCreate={this.handleFolderCreate}
+                     
                     handleInputFoldernameChange={this.handleInputFoldernameChange}
 
                     inputFoldernameValue={this.state.inputFoldernameValue} 
