@@ -54,27 +54,21 @@ class Voicepad extends Component {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        foldername: event.target.foldername.value,
+          folder: {
+        foldername: this.state.inputFoldernameValue,
+      }
             }),
         })
         .then((res) => {
             return res.json()
         })
         .then((json) => {
-            if (json.folder_data.id !== undefined) {
-                const newFolder = {
-                    id: json.folder_data.id,
-                    foldername: json.folder_data.foldername,
-                }
-                this.setState((prevState) => {
-                    return {
-                        folders: prevState.folders.concat(newFolder),
-                    }
-                })
-            } else {
-                console.log('error');
-            }
-        })
+            this.setState({
+                folders: json.folders_data,
+                inputFoldernameValue: ''
+            });
+        }).catch(err => console.log(err))
+       
     }
 
     handleFolderEdit() {

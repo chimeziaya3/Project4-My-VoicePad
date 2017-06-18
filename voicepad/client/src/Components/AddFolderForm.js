@@ -7,7 +7,7 @@ class AddFolderForm extends Component {
 	                <div>
 		                <a href="#close" title="Close" className="close">X</a>
 		                
-		                <form onSubmit={this.props.handleFolderCreate}>
+		                <form onSubmit={event => this.props.handleFolderCreate(event)}>
                             <input
                                 type='text'
                                 value={this.props.inputFoldernameValue}
