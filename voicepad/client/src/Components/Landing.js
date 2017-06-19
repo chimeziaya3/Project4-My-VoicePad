@@ -11,7 +11,7 @@ class Landing extends Component {
             <div className='landingPage'>
                 <div className='logoContainer'>
                     <h1 className='logo'>My VoicePad</h1>
-                    <button className='enterLandingPageBtn'><Link to="/voicepad">click here</Link></button>
+                    <button className='enterLandingPageBtn'><Link to="/mainpage">click here</Link></button>
                 </div>
             </div>
         )

@@ -14,6 +14,7 @@ class Folderlist extends Component {
                             notes={this.props.notes}
 
                             handleFolderDelete={this.props.handleFolderDelete}
+                            handleFolderEdit={this.handleFolderEdit}
                         />
                     )
                 })}

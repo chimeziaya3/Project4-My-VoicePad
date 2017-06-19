@@ -1,21 +1,22 @@
 class FoldersController < ApplicationController
   def index
-    @folders = Folder.order(:id)
+                                                                                            
+    @folders = Folder.all
     # @note = Note.new
-    @notes = Note.order(:id)
-    # @notes = []
+    @notes = Note.order(:id)                                                                                                                                                                                                                                          
+    # @notes = []                                                                                                                                                                 
     # @folders.each do |folder|
-    #     @notes << folder.notes
+    #     @notes << folder.notes                                                                                                            
     #     end
     render json: { 
                     message: "ok",  
-                    folders_data: @folders, 
-                    notes_data: @notes 
+                    folders_data: @folders,                                                        
+                    notes_data: @notes                                           
                 }
     
   end
-  
-  def show
+                                                                                                                                                                    
+  def show                            
     begin
       @note = Note.new
       @notes = Folder.find(params[:id]).notes

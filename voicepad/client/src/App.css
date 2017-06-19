@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+/*.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
@@ -16,7 +16,7 @@
 
 .App-intro {
   font-size: large;
-}
+}*/
 
 .landingPage{
   /*min-height: 100%;*/
@@ -127,8 +127,129 @@
 
 .close:hover { background: #00d9ff; }
 
+.folderContainer{
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(73, 141, 252);
+  position: relative;
+  height: 40px;
+  
+}
+
+.foldername{
+  height: 0;
+  margin: 0;
+  margin-top: 10px;
+  flex: 8;
+  color: white;
+}
+
+.controlBtnContainer{
+  flex: 1;
+}
+
+.folderEditBtn{
+  height: 0;
+  margin: 0;
+  margin-top: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.fa-pencil-square-o{
+  content: 'f040';
+}
+
+.folderDeleteBtn{
+  height: 0;
+  margin: 0;
+  margin-top: 10px;
+  color: white;
+}
+.fa-times{
+   content: 'f00d';
+}
+
+.transcript{
+  text-align: center;
+  margin: 0 auto;
+  /*transition: 6s;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;*/
+}
+
+
+.textControl{
+  
+  height: 200px;
+  max-width: 100vh;
+  width: 100%;
+
+  background-color:  rgb(37, 117, 247);
+  position: fixed;
+  bottom: 0;
+}
+
+.textControlContainer{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.micContainer{
+  margin: 0 auto;
+}
+
+.fa-circle{
+  color: white;
+}
+
+
+.fa-stop{
+  content: '04d';
+  color: rgb(37, 117, 247);
+}
+
+.fa-microphone{
+  content: 'f130';
+  color: rgb(37, 117, 247);
+}
+
+.fa-floppy-o{
+  content: 'f0c7';
+  color: rgb(37, 117, 247);
+}
+
+.refreshContainer{
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.refreshContainer:hover{
+  animation: App-logo-spin infinite 20s linear;
+}
+
+.fa-refresh{
+  content: 'f021';
+  color: rgb(37, 117, 247);
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@-webkit-keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }
+
+/*@keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }*/
 

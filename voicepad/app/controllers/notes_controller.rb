@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-
+    
     def create
     @note = Note.new('title': params[:note][:title], content: params[:note][:content], folder_id: params[:folder_id])
     if @note.save
