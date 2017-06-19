@@ -1,9 +1,10 @@
 class FoldersController < ApplicationController
   def index
                                                                                             
-    @folders = Folder.all
+    @folders = Folder.order(:id)
     # @note = Note.new
-    @notes = Note.order(:id)                                                                                                                                                                                                                                          
+    @notes = Note.find(params[:id]).folder
+    # @notes = folder.order(:id).notes                                                                                                                                                                                                                                          
     # @notes = []                                                                                                                                                                 
     # @folders.each do |folder|
     #     @notes << folder.notes                                                                                                            
@@ -20,7 +21,7 @@ class FoldersController < ApplicationController
     begin
       @note = Note.new
       @notes = Folder.find(params[:id]).notes
-      render json: { message: "ok", folders_data: @folder }
+      render json: { message: "ok", notes_data: @notes }
     rescue ActiveRecord::RecordNotFound
       render json: { message: "no folder matches that ID" }, status: 404
     rescue Exception
@@ -53,6 +54,17 @@ class FoldersController < ApplicationController
 
     rescue Exception
       render json: { message: "there was an error" }, status: 500
+    end
+  end
+
+  def update
+    begin 
+      @folder = Folder.find(params[:id])
+      @folder.update(folder_params)
+      @all_folders = folder.order(:id)
+      render json: { message: "folder updated successfully", folders_data: @all_folders }
+    rescue Exception
+      render json: { message: "there was an error" }
     end
   end
 

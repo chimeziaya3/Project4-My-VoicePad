@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Nav from './Navbar'
 import Footer from './Footer';
 import Folderlist from './Folderlist';
-import AddFolderFrom from './AddFolderForm';
+import AddFolderForm from './AddFolderForm';
 // import {
 //     BrowserRouter as Router,
 //     Route,
@@ -118,8 +118,11 @@ class Mainpage extends Component {
 
                     handleFolderDelete={this.handleFolderDelete}
                     handleFolderEdit={this.handleFolderEdit}
+                    handleInputFoldernameChange={this.handleInputFoldernameChange}
+                    inputFoldernameValue={this.state.inputFoldernameValue}
+                    
                 />
-                <AddFolderFrom 
+                <AddFolderForm 
                     handleFolderCreate={this.handleFolderCreate}
                      
                     handleInputFoldernameChange={this.handleInputFoldernameChange}
