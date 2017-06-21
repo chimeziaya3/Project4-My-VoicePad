@@ -6,7 +6,8 @@ class EditFolderForm extends Component {
             <div id="openModal2" className="modalDialog">
 	                <div>
 		                <a href="#close" title="Close" className="close">X</a>
-		                
+		                <h1>Edit Folder Name</h1>
+                        <p>What will you call your folder now?</p>
 		                <form onSubmit={event => this.props.handleFolderEdit(event, this.props.folder.id)}>
                             <input
                                 type='text'

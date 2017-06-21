@@ -6,7 +6,8 @@ class AddFolderForm extends Component {
             <div id="openModal" className="modalDialog">
 	                <div>
 		                <a href="#close" title="Close" className="close">X</a>
-		                
+		                <h1>Folder Name</h1>
+                        <p>What is your folders name?</p>
 		                <form onSubmit={event => this.props.handleFolderCreate(event)}>
                             <input
                                 type='text'

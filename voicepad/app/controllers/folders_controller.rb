@@ -3,7 +3,8 @@ class FoldersController < ApplicationController
                                                                                             
     @folders = Folder.order(:id)
     # @note = Note.new
-    @notes = Note.find(params[:id]).folder
+    @notes = Note.order(:id)
+    # @notes = Note.find(params[:id]).folder
     # @notes = folder.order(:id).notes                                                                                                                                                                                                                                          
     # @notes = []                                                                                                                                                                 
     # @folders.each do |folder|
@@ -21,7 +22,7 @@ class FoldersController < ApplicationController
     begin
       @note = Note.new
       @notes = Folder.find(params[:id]).notes
-      render json: { message: "ok", notes_data: @notes }
+      render json: { message: "ok", folders_data: @folder }
     rescue ActiveRecord::RecordNotFound
       render json: { message: "no folder matches that ID" }, status: 404
     rescue Exception

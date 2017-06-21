@@ -20,7 +20,7 @@ class App extends Component {
           <main className='everyRoute'>
             <Route exact path='/'component={Landing} />
             <Route exact path='/mainpage' component={Mainpage} />
-            <Route exact path='/writing/:id' component={Writing}/>
+            <Route exact path='/writing' component={Writing}/>
 
           </main>
         

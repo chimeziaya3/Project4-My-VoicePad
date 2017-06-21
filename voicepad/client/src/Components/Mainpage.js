@@ -3,6 +3,8 @@ import Nav from './Navbar'
 import Footer from './Footer';
 import Folderlist from './Folderlist';
 import AddFolderForm from './AddFolderForm';
+
+
 // import {
 //     BrowserRouter as Router,
 //     Route,
@@ -111,7 +113,8 @@ class Mainpage extends Component {
     render(){
         return (
             <main>
-            <nav/>
+            <Nav/>
+                <div className='middleContainer'>
                 <Folderlist 
                     folders={this.state.folders} 
                     notes={this.state.notes}
@@ -129,6 +132,7 @@ class Mainpage extends Component {
 
                     inputFoldernameValue={this.state.inputFoldernameValue} 
                 />
+                </div>
                 <Footer/>
             </main>
         )

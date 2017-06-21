@@ -46,7 +46,7 @@
 
 .navbar{
   /*min-height: 100%;*/
-  position: fixed;
+  /*position: fixed;*/
   height: 50px;
   width: 100%;
   margin: 0;
@@ -56,19 +56,32 @@
   background-color: rgb(37, 117, 247);
 }
 
+.middleContainer{
+  overflow: scroll;
+}
 /*------------- FOOTER --------------------*/
 
 .footer{
   /*min-height: 100%;*/
   height: 50px;
+  max-width: 100vh;
   width: 100%;
-  margin: 0;
+  margin: 0 auto;
+  padding-top: 20px;
   /*margin-top: 76vh;*/
   text-align: center;
   position: fixed;
   bottom: 0;
   color: white;
+  /*padding-top: 20px;*/
+  text-decoration: none;
+  z-index: 999;
   background-color: rgb(37, 117, 247)
+}
+
+.footer > a{
+  text-decoration: none;
+  color: white;
 }
 
   /*------------ Modal -------------------*/
@@ -143,6 +156,20 @@
   margin-top: 10px;
   flex: 8;
   color: white;
+  margin-left: 10px;
+}
+
+.notes{
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  text-align: center;
+  font-size: 15px;
+}
+
+a:-webkit-any-link{
+  text-decoration: none;
+  color: rgb(73, 141, 252);
+  cursor: pointer;
 }
 
 .controlBtnContainer{
@@ -153,6 +180,7 @@
   height: 0;
   margin: 0;
   margin-top: 10px;
+  margin-right: 15px;
   color: white;
   cursor: pointer;
 }
@@ -166,14 +194,23 @@
   margin: 0;
   margin-top: 10px;
   color: white;
+  cursor: pointer;
 }
 .fa-times{
    content: 'f00d';
 }
 
+.transcriptDiv{
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+}
+
 .transcript{
   text-align: center;
   margin: 0 auto;
+  font-family: 'Raleway', sans-serif;
   /*transition: 6s;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
@@ -202,6 +239,15 @@
 
 .micContainer{
   margin: 0 auto;
+}
+
+.fa-arrow-left{
+  content: 'f060';
+  color: rgb(37, 117, 247)
+  
+}
+.arrowCircle{
+  color: rgb(37, 117, 247);
 }
 
 .fa-circle{

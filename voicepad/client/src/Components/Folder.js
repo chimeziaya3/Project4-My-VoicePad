@@ -9,7 +9,7 @@ import {
 class Folder extends Component {
     render() {
         return(
-            <div>
+            <div className='folderComponent'>
                 <div className='folderContainer'>
                     <h4 className='foldername'>{this.props.folder.foldername}</h4>
                     <div className='controlBtnContainer'>
@@ -25,7 +25,13 @@ class Folder extends Component {
                     folder={this.props.folder}
                 />
 
-                
+                {this.props.notes.map((note,index) => {
+                    return (
+                        <div key={note.id}>
+                            <h6 className='notes'><Link to='/writing'>{note.title}</Link></h6>
+                        </div>
+                    )
+                })}
                 
             </div>
         )
