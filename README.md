@@ -2,15 +2,15 @@
 
 Welcome to my Voicepad.This app is an app that will allow users to voice what they want written down.
 
-#Technology's Used
+### Technology's Used
 
 I used Rails for the back-end and React for the Front-end
 
-#Approach taken
+### Approach taken
 
 I took the approach to to create my wireframes first to visualize my app. Then i desgned my database structure. After that i when i created my database
 
-#User-Story
+### User-Story
 
 1. Users will have to click on the logo to get into the site.
 2. Users will be able to create new folders.
@@ -22,7 +22,12 @@ I took the approach to to create my wireframes first to visualize my app. Then i
 8. Users will be able to save the notes.
 9. Users will be able to edit notes.
 
-#Wire-Frames
+### Wire-Frames
 
-#Unresolved Problems 
+TBA
 
+### Unresolved Problems 
+1. App is not responsive yet.
+2. Can't get the voice recording to record effectively.
+3. Can't ge the association right in rails.
+4. Databases needs restructuring
